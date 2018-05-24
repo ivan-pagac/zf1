@@ -289,8 +289,9 @@ class Zend_Config_Yaml extends Zend_Config
     {
         $config   = array();
         $inIndent = false;
-        foreach ($lines as $n => $line) {
-//        while (list($n, $line) = each($lines)) {
+        // foreach NOT working here due "prev" function call inside
+//        foreach ($lines as $n => $line) {
+        while (list($n, $line) = @each($lines)) {
             $lineno = $n + 1;
 
             $line = rtrim(preg_replace("/#.*$/", "", $line));

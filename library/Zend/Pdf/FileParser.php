@@ -445,10 +445,11 @@ abstract class Zend_Pdf_FileParser
             return '';
         }
         $bytes = $this->_dataSource->readBytes($byteCount);
-        if ($characterSet == 'MacRoman') {
+        if ($characterSet == 'MacRoman' || $characterSet == 'Macintosh') {
             return $bytes;
         }
-        return iconv('MacRoman', $characterSet, $bytes);
+        return iconv('Macintosh', $characterSet, $bytes);
+        //return iconv('MacRoman', $characterSet, $bytes);
     }
 
     /**
